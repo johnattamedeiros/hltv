@@ -47,6 +47,8 @@ async function scrapeMatches(url) {
     if(score1 !== '-'){
       matches.push({ code, data });
     }
+    console.log("Scrap Finalizado");
+
   });
 
   await browser.close();
@@ -57,7 +59,7 @@ async function saveMatchesToDB() {
   try {
     await sequelize.sync();
     const matches = [];
-
+    console.log("Iniciando Scraps");
 
     const matchesFuria = await scrapeMatches("https://www.hltv.org/team/8297/furia#tab-matchesBox");
     const matchesPain = await scrapeMatches("https://www.hltv.org/team/4773/pain#tab-matchesBox");
